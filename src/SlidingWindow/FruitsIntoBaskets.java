@@ -60,9 +60,5 @@ public class FruitsIntoBaskets {
             }
         }
         System.out.println("Total number of fruits that can be fit into 2 baskets are " + max_fruits);
-
-
-
-
     }
 }
