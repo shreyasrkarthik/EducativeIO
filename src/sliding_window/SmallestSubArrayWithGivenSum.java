@@ -1,4 +1,4 @@
-package SlidingWindow;
+package sliding_window;
 
 public class SmallestSubArrayWithGivenSum {
     public static void main(String[] args){

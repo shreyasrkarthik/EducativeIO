@@ -1,9 +1,6 @@
-package SlidingWindow;
+package sliding_window;
 
-import java.util.HashMap;
-
-public class Problem1 {
-
+public class Problem2 {
     public static int[] char_count(String pattern){
         int char_count[] = new int[500];
 
@@ -14,6 +11,7 @@ public class Problem1 {
         }
         return char_count;
     }
+
     public static int getSum(int[] array){
         int sum = 0;
         for(int a: array){
@@ -26,22 +24,24 @@ public class Problem1 {
         //Problem: Permutation in a String
 
         //input variables
-        String input = "bcdxabcdy", pattern = "cbd";
+        String input = "abbcabc", pattern = "abc";
 
         //other variables
         int start = 0, end = 0, input_len = input.length();
         int char_count[] = char_count(pattern);
+        int output = 0;
 
         //Logic
         while (end < input_len) {
             if(char_count[(int)(input.charAt(end))] == 0){
                 if(end-start == pattern.length() && getSum(char_count) == 0){
-                    System.out.println("Found the matching pattern");
-                    System.exit(1);
+                    output++;
+                    start += 1;
+                    end += 1;
                 }
                 else{
                     char_count = char_count(pattern);
-                    start = end + 1;
+                    start += 1;
                     end = start;
                 }
             }
@@ -52,8 +52,8 @@ public class Problem1 {
 
         }
         if(end-start == pattern.length() && getSum(char_count) == 0)
-        System.out.println("Found the matching pattern");
-        else
-        System.out.println("Couldn\'t find the pattern in the input string");
+            output++;
+
+        System.out.println("Total matching patterns " + output);
     }
 }

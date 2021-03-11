@@ -1,4 +1,4 @@
-package SlidingWindow;
+package sliding_window;
 
 public class LongestSubarrayWithOnesAfterReplacement {
     public static void main(String[] args) {
