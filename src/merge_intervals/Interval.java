@@ -3,12 +3,17 @@ package merge_intervals;
 import java.util.ArrayList;
 
 class Interval{
-    int start, end;
+    int start, end, load;
     Interval(int start, int end){
         this.start = start;
         this.end = end;
     }
+    Interval(int start, int end, int load){
+        this.start = start;
+        this.end = end;
+        this.load = load;
 
+    }
     int getStart(){
         // This is written to create a comparator for sorting intervals by start
         return this.start;
