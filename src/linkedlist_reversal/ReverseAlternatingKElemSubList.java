@@ -1,6 +1,6 @@
 package linkedlist_reversal;
 
-public class ReverseEveryKElementSubList {
+public class ReverseAlternatingKElemSubList {
     public static void main(String[] args) {
         Node head = new Node(2);
         head.next = new Node(4);
@@ -14,35 +14,36 @@ public class ReverseEveryKElementSubList {
 
         int k = 3;
 
-        Node reverse = reverseKElements(head, k);
+        Node reverse = reverseAlternateKElements(head, k);
         Node.printLL(reverse);
     }
-
-    public static Node reverseKElements(Node head, int k){
+    public static Node reverseAlternateKElements(Node head, int k){
         if(head == null || k<=1)
             return head;
 
         Node previous = null, current = head;
+        while (current != null){
+            Node lastNodeOfPrevSubList = previous, lastNodeSubList = current;
 
-        while (true){
-            Node lastNodeOfPrevSubList = previous, lastNodeOfSubList = current, next = null;
-
-            for(int i=0; i<k && current!=null; i++){
-                next = current.next;
+            for(int i=0; i<k && current!=null; i++)
+            {
+                Node next = current.next;
                 current.next = previous;
                 previous = current;
                 current = next;
             }
 
             if(lastNodeOfPrevSubList == null)
-                head = previous; // Assign new head
+                head = previous;
             else
-                lastNodeOfPrevSubList.next = previous; // Connect the two lists
+                lastNodeOfPrevSubList.next = previous;
 
-            lastNodeOfSubList.next = current;
-            if(current == null)
-                break;
-            previous = lastNodeOfSubList;
+            lastNodeSubList.next = current;
+
+            for(int i=0;i<k&&current!=null;i++){
+                previous = current;
+                current = current.next;
+            }
         }
         return head;
     }
