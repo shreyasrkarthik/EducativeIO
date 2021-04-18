@@ -5,6 +5,7 @@ import java.util.*;
 class Node{
     Node left, right, next;
     int val;
+    Node(){}
     Node(int val){
         this.val = val;
     }
